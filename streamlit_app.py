@@ -71,4 +71,4 @@ st.write(table_booking_percent.astype(str) + '%')
 st.subheader("📲 Percentage of Restaurants with Online Delivery")
 online_delivery_percent = df['Has_Online_delivery'].value_counts(normalize=True) * 100
 st.write(online_delivery_percent.astype(str) + '%')
-st.dataframe(online_delivery_percent.sort_values( ascending=False))
+

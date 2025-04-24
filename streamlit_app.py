@@ -35,9 +35,9 @@ st.dataframe(openings_by_time.sort_values(by="RestaurantCount", ascending=False)
 
 
 fig, ax = plt.subplots()
-ax.plot(openings_by_year['Year'], openings_by_year['RestaurantCount'], marker='o')
-ax.set_title("Restaurants Opened per Year")
-ax.set_xlabel("Year")
+ax.plot(openings_by_time['Year', 'Quarter', 'Month'], openings_by_time['RestaurantCount'], marker='o')
+ax.set_title("Restaurants Opened Over Time")
+ax.set_xlabel("Year","Quarter","Month")
 ax.set_ylabel("Number of Restaurants")
 st.pyplot(fig)
 

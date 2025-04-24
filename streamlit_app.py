@@ -65,7 +65,7 @@ st.pyplot(fig2)
 st.subheader("🗃️ Percentage of Restaurants with Table Booking")
 table_booking_percent = df['Has_Table_booking'].value_counts(normalize=True) * 100
 st.write(table_booking_percent.astype(str) + '%')
-st.dataframe(table_booking_percent.sort_values(by="Has_Table_booking", ascending=False))
+st.dataframe(table_booking_percent.sort_values(by="table_booking_percent", ascending=False))
 
 # ----- Percentage of Restaurants with Online Delivery
 st.subheader("📲 Percentage of Restaurants with Online Delivery")

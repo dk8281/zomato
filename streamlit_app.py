@@ -22,7 +22,7 @@ st.write(df.head())
 # ----- Number of Restaurants by City and Country
 st.subheader("📌 Number of Restaurants by City and Country")
 city_country_counts = df.groupby(['City', 'CountryCode'])['RestaurantID'].nunique().reset_index(name='RestaurantCount')
-st.dataframe(city_country_counts.sort_values(by="City", ascending=False))
+st.dataframe(city_country_counts.sort_values(by="RestaurantCount", ascending=False))
 
 # ----- Restaurant Openings Over Time
 st.subheader("📆 Restaurants Opened Over Time")

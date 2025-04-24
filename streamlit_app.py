@@ -57,7 +57,7 @@ price_counts.columns = ['PriceBucket', 'RestaurantCount']
 st.dataframe(price_counts.sort_values(by="RestaurantCount", ascending=False))
 
 fig2, ax2 = plt.subplots()
-ax2.pie(price_counts['RestaurantCount'], labels=rating_counts['PriceBucket'], autopct='%1.1f%%')
+ax2.pie(price_counts['RestaurantCount'], labels=price_counts['PriceBucket'], autopct='%1.1f%%')
 ax2.set_title("Distribution of Price")
 st.pyplot(fig2)
 

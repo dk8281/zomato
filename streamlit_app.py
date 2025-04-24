@@ -33,14 +33,6 @@ df['Month'] = df['Datekey_Opening'].dt.month
 openings_by_time = df.groupby(['Year', 'Quarter', 'Month'])['RestaurantID'].nunique().reset_index(name='RestaurantCount')
 st.dataframe(openings_by_time.sort_values(by="RestaurantCount", ascending=False))
 
-
-fig, ax = plt.subplots()
-ax.plot(openings_by_time['Year', 'Quarter', 'Month'], openings_by_time['RestaurantCount'], marker='o')
-ax.set_title("Restaurants Opened Over Time")
-ax.set_xlabel("Year","Quarter","Month")
-ax.set_ylabel("Number of Restaurants")
-st.pyplot(fig)
-
 # ----- Rating Distribution
 st.subheader("🌟 Rating Distribution")
 rating_bins = [0, 1.99, 2.99, 3.99, 4.99, 5]

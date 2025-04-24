@@ -27,13 +27,11 @@ st.dataframe(city_country_counts.sort_values(by="RestaurantCount", ascending=Fal
 # ----- Restaurant Openings Over Time
 st.subheader("📆 Restaurants Opened Over Time")
 df['Datekey_Opening'] = pd.to_datetime(df['Datekey_Opening'])
-
 df['Year'] = df['Datekey_Opening'].dt.year
 df['Quarter'] = df['Datekey_Opening'].dt.quarter
 df['Month'] = df['Datekey_Opening'].dt.month
-
 openings_by_time = df.groupby(['Year', 'Quarter', 'Month'])['RestaurantID'].nunique().reset_index(name='RestaurantCount')
-print(openings_by_time)
+st.dataframe(openings_by_time.sort_values(by="RestaurantCount", ascending=False))
 
 
 fig, ax = plt.subplots()
@@ -48,9 +46,9 @@ st.subheader("🌟 Rating Distribution")
 rating_bins = [0, 1.99, 2.99, 3.99, 4.99, 5]
 rating_labels = ['0-1.99', '2-2.99', '3-3.99', '4-4.99', '5']
 df['RatingBucket'] = pd.cut(df['Rating'], bins=rating_bins, labels=rating_labels, include_lowest=True)
-
 rating_counts = df['RatingBucket'].value_counts().sort_index().reset_index(name='RestaurantCount')
 rating_counts.columns = ['RatingBucket', 'RestaurantCount']
+st.dataframe(rating_counts.sort_values(by="RatingBucket","RestaurantCount", ascending=False))
 
 fig2, ax2 = plt.subplots()
 ax2.pie(rating_counts['RestaurantCount'], labels=rating_counts['RatingBucket'], autopct='%1.1f%%')
@@ -62,10 +60,9 @@ st.subheader("💲 Price Distribution")
 price_bins = [0, 200, 400, 600, 800, 10000]
 price_labels = ['0-200', '201-400', '401-600', '601-800', '800+']
 df['PriceBucket'] = pd.cut(df['Average_Cost_for_two'], bins=price_bins, labels=price_labels, include_lowest=True)
-
 price_counts = df['PriceBucket'].value_counts().sort_index().reset_index(name='RestaurantCount')
 price_counts.columns = ['PriceBucket', 'RestaurantCount']
-print(price_counts)
+st.dataframe(price_counts.sort_values(by="PriceBucket","RestaurantCount", ascending=False))
 
 fig2, ax2 = plt.subplots()
 ax2.pie(Price_counts['RestaurantCount'], labels=rating_counts['PriceBucket'], autopct='%1.1f%%')
@@ -76,8 +73,10 @@ st.pyplot(fig2)
 st.subheader("🗃️ Percentage of Restaurants with Table Booking")
 table_booking_percent = df['Has_Table_booking'].value_counts(normalize=True) * 100
 print(table_booking_percent.astype(str) + '%')
+t.dataframe(table_booking_percent.sort_values(by="Has_Table_booking", ascending=False))
 
 # ----- Percentage of Restaurants with Online Delivery
 st.subheader("📲 Percentage of Restaurants with Online Delivery")
 online_delivery_percent = df['Has_Online_delivery'].value_counts(normalize=True) * 100
 print(online_delivery_percent.astype(str) + '%')
+t.dataframe(online_delivery_percent.sort_values(by="Has_Online_delivery", ascending=False))

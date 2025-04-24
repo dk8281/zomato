@@ -48,7 +48,7 @@ rating_labels = ['0-1.99', '2-2.99', '3-3.99', '4-4.99', '5']
 df['RatingBucket'] = pd.cut(df['Rating'], bins=rating_bins, labels=rating_labels, include_lowest=True)
 rating_counts = df['RatingBucket'].value_counts().sort_index().reset_index(name='RestaurantCount')
 rating_counts.columns = ['RatingBucket', 'RestaurantCount']
-st.dataframe(rating_counts.sort_values(by="RatingBucket","RestaurantCount", ascending=False))
+st.dataframe(rating_counts.sort_values(by="RestaurantCount", ascending=False))
 
 fig2, ax2 = plt.subplots()
 ax2.pie(rating_counts['RestaurantCount'], labels=rating_counts['RatingBucket'], autopct='%1.1f%%')
@@ -62,7 +62,7 @@ price_labels = ['0-200', '201-400', '401-600', '601-800', '800+']
 df['PriceBucket'] = pd.cut(df['Average_Cost_for_two'], bins=price_bins, labels=price_labels, include_lowest=True)
 price_counts = df['PriceBucket'].value_counts().sort_index().reset_index(name='RestaurantCount')
 price_counts.columns = ['PriceBucket', 'RestaurantCount']
-st.dataframe(price_counts.sort_values(by="PriceBucket","RestaurantCount", ascending=False))
+st.dataframe(price_counts.sort_values(by="RestaurantCount", ascending=False))
 
 fig2, ax2 = plt.subplots()
 ax2.pie(Price_counts['RestaurantCount'], labels=rating_counts['PriceBucket'], autopct='%1.1f%%')
